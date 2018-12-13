@@ -2,7 +2,7 @@
 
 WebRotate 360 Product Viewer Standard Integration for Magento 2 allows integrating embedded 360-degree or 3D product views into standard gallery on product pages in Magento 2. The product views can be created using our free publishing software available on [webrotate360.com](http://www.webrotate360.com/products/webrotate-360-product-viewer.aspx). 
 
-[![](https://img.youtube.com/vi/aT4I2arGn3o/0.jpg)](https://www.youtube.com/watch?v=aT4I2arGn3o)
+[![Click to see a quick preview](https://img.youtube.com/vi/aT4I2arGn3o/0.jpg)](https://www.youtube.com/watch?v=aT4I2arGn3o)
 
 Note that a separate WebRotate 360 Ad-hoc integration is also [available](https://github.com/webrotate360/magento2-adhoc). 
 
