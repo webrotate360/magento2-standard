@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="38px" height="38px" viewBox="0 0 38 38" enable-background="new 0 0 38 38" xml:space="preserve">
+<g>
+	<path fill="#878787" d="M19,1.52c9.639,0,17.479,7.842,17.479,17.48c0,9.639-7.842,17.479-17.479,17.479
+		c-9.637,0-17.479-7.84-17.479-17.479C1.521,9.362,9.362,1.52,19,1.52 M19,0C8.507,0,0,8.507,0,19s8.507,19,19,19s19-8.507,19-19
+		S29.493,0,19,0L19,0z"/>
+	<g>
+		<polygon fill="#878787" points="20.221,10.938 27.06,10.938 27.06,17.777 25.54,17.777 25.54,12.458 20.221,12.458 		"/>
+		
+			<rect x="22.54" y="10.455" transform="matrix(0.7069 0.7073 -0.7073 0.7069 17.2251 -12.1714)" fill="#878787" width="1.52" height="8.49"/>
+	</g>
+	<g>
+		<polygon fill="#878787" points="10.94,20.223 12.46,20.223 12.46,25.542 17.779,25.542 17.779,27.063 10.94,27.063 		"/>
+		
+			<rect x="13.941" y="19.055" transform="matrix(0.7074 0.7068 -0.7068 0.7074 20.7694 -3.5734)" fill="#878787" width="1.52" height="8.491"/>
+	</g>
+</g>
+</svg>
