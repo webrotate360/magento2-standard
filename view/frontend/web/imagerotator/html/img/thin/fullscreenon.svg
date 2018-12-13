@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="18px" height="18px" viewBox="0 0 18 18" enable-background="new 0 0 18 18" xml:space="preserve">
+<g>
+	<polyline fill="none" stroke="#A5A5A5" stroke-width="2" stroke-linecap="butt" stroke-linejoin="round" points="17,7 17,1.0 11,1.144"/>
+	<line fill="none" stroke="#A5A5A5" stroke-width="2" stroke-linecap="square" stroke-linejoin="round" x1="11.034" y1="6.894" x2="16.576" y2="1.535"/>
+	<polyline fill="none" stroke="#A5A5A5" stroke-width="2" stroke-linecap="butt" stroke-linejoin="round" points="1,11 1,16.856 7,16.856"/>
+	<line fill="none" stroke="#A5A5A5" stroke-width="2" stroke-linecap="square" stroke-linejoin="round" x1="6.965" y1="11.107" x2="1.423" y2="16.466"/>
+</g>
+</svg>

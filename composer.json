@@ -1,0 +1,20 @@
+{
+  "name": "webrotate360/module-product-viewer-standard",
+  "description": "WebRotate 360 Product Viewer Standard Integration for Magento 2. This extension allows integrating embedded 360-degree or 3D product views into standard gallery on product pages in Magento 2. The product views can be created using our free publishing software available on webrotate360.com.",
+  "require": {
+    "magento/framework": ">=100.0.0"
+  },
+  "type": "magento2-module",
+  "version": "3.0.0",
+  "license": [
+    "MIT"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "WebRotate360\\ProductViewerStandard\\": ""
+    }
+  }
+}

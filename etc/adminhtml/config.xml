@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <webrotate360standard>
+            <general>
+                <enabled>1</enabled>
+                <viewer_skin>basic</viewer_skin>
+                <gallery_end_placement>0</gallery_end_placement>
+            </general>
+            <advanced>
+                <master_config></master_config>
+                <license></license>
+                <api_callback></api_callback>
+                <use_analytics>0</use_analytics>
+            </advanced>
+        </webrotate360standard>
+    </default>
+</config>
