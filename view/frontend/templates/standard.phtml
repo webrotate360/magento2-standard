@@ -1,39 +1,44 @@
 <?php
-    // TODO: add forward slash to the root path at the end if not present
-    // TODO: add graphics path in admin and default it to external indicator folder with old and new indicators
+// TODO: add forward slash to the root path at the end if not present
+// TODO: add graphics path in admin and default it to external indicator folder with old and new indicators
 
-    $helper = $this->helper('WebRotate360\ProductViewerStandard\Helper\Data');
-    if (!$helper)
-        return;
+/** @var WebRotate360\ProductViewerStandard\ViewModel\WebRotatedStandard $viewModel */
+$viewModel = $block->getViewModel();
 
-    $rootPath   = $helper->getWebrotateRootUrl();
-    $configPath = $helper->getWebrotatePath();
-    $swatches   = $helper->getSwatches();
+$rootPath = $viewModel->getWebrotateRootUrl();
+$configPath = $viewModel->getWebrotatePath();
+$swatches = $viewModel->getSwatches();
 
-    if (empty($configPath))
-    {
-        $configPath = $helper->getMasterConfigUrl();
-        if (!empty($configPath))
-            $isMasterMode = true;
+if (empty($configPath)) {
+    $configPath = $viewModel->getMasterConfigUrl();
+    if (!empty($configPath)) {
+        $isMasterMode = true;
     }
+}
 
-    $isLoaderOn = (!isset($isMasterMode) && !empty($configPath)) || (isset($isMasterMode) && !empty($rootPath));
+$configUrl = $viewModel->getBaseUrl();
+if ($viewModel->getUseMediaUrlConfig() === true) {
+    $configUrl = $viewModel->getMediaUrl();
+}
+
+$isLoaderOn = (!isset($isMasterMode) && !empty($configPath)) || (isset($isMasterMode) && !empty($rootPath));
 ?>
 
 <?php if ($isLoaderOn): ?>
-    <?php $configPath = $helper->getBaseUrl() . $configPath; ?>
-    <link  rel="stylesheet" type="text/css" href="<?php echo $helper->getViewerSkinUrl() ?>" />
+    <?php $configPath = $configUrl . $configPath; ?>
+    <link rel="stylesheet" type="text/css" href="<?php echo $viewModel->getViewerSkinUrl() ?>"/>
     <script language="javascript" type="text/javascript">
-        var __WR360Config =  {
-            thumbPath: "<?php echo $helper->getPopupIconUrl() ?>",
-            graphicsPath: "<?php echo $helper->getGraphicsPathUrl() ?>",
-            endPlacement: <?php $helper->isEndPlacement() ? print("true") : print("false") ?>,
+        var __WR360Config = {
+            thumbPath: "<?php echo $viewModel->getPopupIconUrl() ?>",
+            graphicsPath: "<?php echo $viewModel->getGraphicsPathUrl() ?>",
+            endPlacement: <?php $viewModel->isEndPlacement() ? print("true") : print("false") ?>,
             confFileURL: "<?php echo $configPath ?>",
             rootPath: "<?php echo $rootPath ?>",
-            licensePath: "<?php echo $helper->getLicense() ?>",
-            useAnalytics: <?php $helper->isUseAnalytics() ? print("true") : print("false") ?>,
-            apiCallback: "<?php echo $helper->getApiCallback() ?>",
+            licensePath: "<?php echo $viewModel->getLicense() ?>",
+            useAnalytics: <?php $viewModel->isUseAnalytics() ? print("true") : print("false") ?>,
+            apiCallback: "<?php echo $viewModel->getApiCallback() ?>",
             swatches: <?php $swatches ? print($swatches) : print("null") ?>
         };
     </script>
-<?php endif?>
+<?php endif ?>
+
