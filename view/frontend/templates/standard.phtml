@@ -24,20 +24,21 @@ if ($viewModel->getUseMediaUrlConfig() === true) {
 $isLoaderOn = (!isset($isMasterMode) && !empty($configPath)) || (isset($isMasterMode) && !empty($rootPath));
 ?>
 
-<?php if ($isLoaderOn): ?>
+<?php if ($isLoaderOn) : ?>
     <?php $configPath = $configUrl . $configPath; ?>
-    <link rel="stylesheet" type="text/css" href="<?php echo $viewModel->getViewerSkinUrl() ?>"/>
+    <link rel="stylesheet" type="text/css" href="<?= /* @noEscape */
+    $viewModel->getViewerSkinUrl() ?>"/>
     <script language="javascript" type="text/javascript">
         var __WR360Config = {
-            thumbPath: "<?php echo $viewModel->getPopupIconUrl() ?>",
-            graphicsPath: "<?php echo $viewModel->getGraphicsPathUrl() ?>",
-            endPlacement: <?php $viewModel->isEndPlacement() ? print("true") : print("false") ?>,
-            confFileURL: "<?php echo $configPath ?>",
-            rootPath: "<?php echo $rootPath ?>",
-            licensePath: "<?php echo $viewModel->getLicense() ?>",
-            useAnalytics: <?php $viewModel->isUseAnalytics() ? print("true") : print("false") ?>,
-            apiCallback: "<?php echo $viewModel->getApiCallback() ?>",
-            swatches: <?php $swatches ? print($swatches) : print("null") ?>
+            thumbPath: "<?= /* @noEscape */ $viewModel->getPopupIconUrl() ?>",
+            graphicsPath: "<?= /* @noEscape */ $viewModel->getGraphicsPathUrl() ?>",
+            endPlacement: <?=/* @noEscape */ $viewModel->isEndPlacement() ? 'true' : 'false' ?>,
+            confFileURL: "<?= /* @noEscape */ $configPath ?>",
+            rootPath: "<?= /* @noEscape */ $rootPath ?>",
+            licensePath: "<?= /* @noEscape */ $viewModel->getLicense() ?>",
+            useAnalytics: <?=/* @noEscape */  $viewModel->isUseAnalytics() ? 'true' : 'false' ?>,
+            apiCallback: "<?=/* @noEscape */  $viewModel->getApiCallback() ?>",
+            swatches: <?=/* @noEscape */ $swatches ? $swatches : 'null' ?>
         };
     </script>
 <?php endif ?>

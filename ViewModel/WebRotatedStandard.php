@@ -14,6 +14,9 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
 
+/**
+ * View Model for WebRotated 360 integration.
+ */
 class WebRotatedStandard implements ArgumentInterface
 {
     const XML_PATH_ENABLED = 'webrotate360standard/general/enabled';
@@ -54,8 +57,7 @@ class WebRotatedStandard implements ArgumentInterface
         ProductRepository $productRepository,
         AssetRepository $assetRepository,
         StoreManagerInterface $storeManager
-    )
-    {
+    ) {
         $this->registry = $registry;
         $this->config = $config;
         $this->productRepository = $productRepository;
@@ -208,10 +210,10 @@ class WebRotatedStandard implements ArgumentInterface
             }
 
             if ($configURL) {
-                $swatches->{$child->getId()} = array(
+                $swatches->{$child->getId()} = [
                     'confFileURL' => $this->getBaseUrl() . $configURL,
                     'rootPath' => $configRoot
-                );
+                ];
             }
         }
 
