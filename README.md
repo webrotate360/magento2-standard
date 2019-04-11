@@ -4,7 +4,7 @@ WebRotate 360 Product Viewer Standard Integration for Magento 2 allows integrati
 
 Click this image to see a quick preview on YouTube: 
 
-[![Click to see a quick preview](https://img.youtube.com/vi/aT4I2arGn3o/0.jpg)](https://www.youtube.com/watch?v=aT4I2arGn3o)
+[![Click to see a quick preview](https://img.youtube.com/vi/XgEHlmGYQYw/0.jpg)](https://www.youtube.com/watch?v=XgEHlmGYQYw)
 
 Note that a separate WebRotate 360 Ad-hoc integration is also [available](https://github.com/webrotate360/magento2-adhoc). 
 
