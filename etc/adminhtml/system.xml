@@ -25,13 +25,14 @@
                     <comment><![CDATA[Alternative location of thumbnail graphic.]]></comment>
                 </field>
                 <field id="gallery_end_placement" translate="label" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>As last slide</label>
+                    <label>As Last Slide</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <comment><![CDATA[Set to Yes to place 360 view as last slide in the gallery]]></comment>
                 </field>
                 <field id="media_url_config" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Use Media Url for Config Load </label>
+                    <label>Use Media URL for Config Load </label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Set to Yes to load viewer (xml) configuration files relative to Magento's media folder]]></comment>
                 </field>
             </group>
             <group id="advanced" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">

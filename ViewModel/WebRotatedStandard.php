@@ -192,32 +192,39 @@ class WebRotatedStandard implements ArgumentInterface
     {
         $configProduct = $this->getCurrentProduct();
 
-        if (!$configProduct || $configProduct != Configurable::TYPE_CODE) {
+        if (!$configProduct || $configProduct->getTypeId() != Configurable::TYPE_CODE) {
             return null;
         }
 
         $swatches = (object)[];
         $children = $configProduct->getTypeInstance()->getUsedProducts($configProduct);
         $masterConfig = $this->getMasterConfigUrl();
+        $hasSwatches = false;
+
+        $configBaseUrl = $this->getBaseUrl();
+        if ($this->getUseMediaUrlConfig() === true) {
+            $configBaseUrl = $this->getMediaUrl();
+        }
 
         foreach ($children as $child) {
             $fetched = $this->productRepository->getById($child->getId());
             $configRoot = $fetched->getData('webrotate_root');
-            $configURL = ltrim($fetched->getData('webrotate_path'), '/');
+            $configUrl = ltrim($fetched->getData('webrotate_path'), '/');
 
-            if (!$configURL && $masterConfig && $configRoot) {
-                $configURL = $masterConfig;
+            if (!$configUrl && $masterConfig && $configRoot) {
+                $configUrl = $masterConfig;
             }
 
-            if ($configURL) {
+            if ($configUrl) {
+                $hasSwatches = true;
                 $swatches->{$child->getId()} = [
-                    'confFileURL' => $this->getBaseUrl() . $configURL,
+                    'confFileURL' => $configBaseUrl . $configUrl,
                     'rootPath' => $configRoot
                 ];
             }
         }
 
-        return (count($swatches) > 0) ? json_encode($swatches, JSON_UNESCAPED_SLASHES) : null;
+        return $hasSwatches ? json_encode($swatches, JSON_UNESCAPED_SLASHES) : null;
     }
 
     /**
