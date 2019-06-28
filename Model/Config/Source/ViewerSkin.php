@@ -2,45 +2,50 @@
 
 namespace WebRotate360\ProductViewerStandard\Model\Config\Source;
 
-class ViewerSkin implements \Magento\Framework\Option\ArrayInterface
+use Magento\Framework\Option\ArrayInterface;
+
+/**
+ * Config class for design skins.
+ */
+class ViewerSkin implements ArrayInterface
 {
     public function toOptionArray()
     {
-        return array(
-           array(
+        return [
+           [
                'value' => 'basic',
                'label' => 'basic'
-           ),
+           ],
 
-           array(
+           [
                'value' => 'thin',
                'label' => 'thin'
-           ),
+           ],
 
-           array(
+           [
                'value' => 'round',
                'label' => 'round'
-           ),
+           ],
 
-           array(
+           [
                'value' => 'retina',
                'label' => 'retina'
-           ),
+           ],
 
-           array(
+           [
                'value' => 'empty',
                'label' => 'empty'
-           ),
+           ],
 
-           array(
+           [
                'value' => 'zoom_light',
                'label' => 'zoom light'
-           ),
+           ],
 
-           array(
+           [
               'value' => 'zoom_dark',
               'label' => 'zoom dark'
-          ),
-       );
+           ],
+        ];
     }
 }

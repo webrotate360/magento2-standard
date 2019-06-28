@@ -4,6 +4,9 @@
     <body>
         <referenceBlock name="head.additional">
             <block class="Magento\Framework\View\Element\Template" ifconfig="webrotate360standard/general/enabled" name="webrotatestandard" template="WebRotate360_ProductViewerStandard::standard.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">WebRotate360\ProductViewerStandard\ViewModel\WebRotatedStandard</argument>
+                </arguments>
             </block>
         </referenceBlock>
     </body>
