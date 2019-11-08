@@ -25,7 +25,7 @@ $isLoaderOn = (!isset($isMasterMode) && !empty($configPath)) || (isset($isMaster
 ?>
 
 <?php if ($isLoaderOn) : ?>
-    <?php $configPath = $configBaseUrl . $configPath; ?>
+    <?php $configPath = strpos($configPath, 'https://') === 0 ? $configPath : $configBaseUrl . $configPath; ?>
     <link rel="stylesheet" type="text/css" href="<?= /* @noEscape */ $viewModel->getViewerSkinUrl() ?>"/>
     <script language="javascript" type="text/javascript">
         var __WR360Config = {

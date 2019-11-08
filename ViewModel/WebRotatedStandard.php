@@ -218,7 +218,7 @@ class WebRotatedStandard implements ArgumentInterface
             if ($configUrl) {
                 $hasSwatches = true;
                 $swatches->{$child->getId()} = [
-                    'confFileURL' => $configBaseUrl . $configUrl,
+                    'confFileURL' => strpos($configUrl, 'https://') === 0 ? $configUrl : $configBaseUrl . $configUrl,
                     'rootPath' => $configRoot
                 ];
             }
