@@ -23,6 +23,7 @@ class WebRotatedStandard implements ArgumentInterface
     const XML_PATH_VIEWER_SKIN = 'webrotate360standard/general/viewer_skin';
     const XML_PATH_USE_ANALYTICS = 'webrotate360standard/advanced/use_analytics';
     const XML_PATH_API_CALLBACK = 'webrotate360standard/advanced/api_callback';
+    const XML_PATH_GRAPHICS_PATH = 'webrotate360standard/advanced/graphics_path';
     const XML_PATH_MASTER_CONFIG = 'webrotate360standard/advanced/master_config';
     const XML_PATH_LICENSE = 'webrotate360standard/advanced/license';
     const XML_PATH_POPUP_ICON = 'webrotate360standard/general/popup_icon';
@@ -106,6 +107,11 @@ class WebRotatedStandard implements ArgumentInterface
      */
     public function getGraphicsPathUrl()
     {
+        $graphicsPath = $this->config->getValue(self::XML_PATH_GRAPHICS_PATH, ScopeInterface::SCOPE_STORE);
+        if (!empty($graphicsPath)) {
+            return $graphicsPath;
+        }
+
         return $this->assetRepository->getUrl(self::ASSET_BASE_PATH . '/html/img/' . $this->getViewerSkin());
     }
 
