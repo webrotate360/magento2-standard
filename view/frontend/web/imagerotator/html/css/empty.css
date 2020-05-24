@@ -345,6 +345,7 @@
     height:0 !important;
     padding:0 !important;
     margin:0 !important;
+    pointer-events:none;
 }
 
 .wr360_player .container .theme_panel .toolbar a.fullscreenoff_button,

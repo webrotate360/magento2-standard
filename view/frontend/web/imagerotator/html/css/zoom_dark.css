@@ -350,6 +350,7 @@
     box-sizing:content-box !important;
     border:none !important;
     background:inherit !important;
+    pointer-events:none;
 }
 
 .wr360_player .container .theme_panel .toolbar > a
