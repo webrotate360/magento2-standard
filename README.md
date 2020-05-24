@@ -53,13 +53,18 @@ php bin/magento cache:flush
 
 Select Stores > Configuration and expand WebRotate 360 Product Viewer > Standard in your Magento admin. 
 
-* Enter a CSS class or id of an html element to be used as a placeholder for 360 product views (or a popup activation button) on the product pages under Page Placeholder.
-* Configure the module by following descriptions under each field on the page.
+* Set desired viewer skin and gallery slide position.
 * Select a test product in Magento catalog and create a new product attribute (as a text field) with the attribute code set to webrotate_path.
-* Enter this demo config URL in the attribute field for the selected product and save and refresh Magento caches.
+* Enter this demo config URL (hosted via [PixRiot](https://www.webrotate360.com/services/pixriot.aspx)) in the attribute field for selected product and save and refresh Magento caches.
 
  ```shell
- /pub/static/frontend/Magento/your-root-theme-folder-path/WebRotate360_ProductViewerStandard/360assets/sampleshoe/config.xml
+https://v1.pixriot.com/?spin=433181dfa6/CMS/Magento/Example
+ ```
+ 
+ 
+ Alternatively, copy "sampleshoe" folder that is installed with the plugin (under WebRotate360/ProductViewerStandard/view/frontend/web/360assets) to a folder in your Magento installation and update the attribute field accordingly: 
+ ```shell
+ /my-360-views/sampleshoe/config.xml
  ```
 
 
@@ -67,7 +72,7 @@ Select Stores > Configuration and expand WebRotate 360 Product Viewer > Standard
 
 Download [WebRotate 360 Product Viewer software](http://www.webrotate360.com/products/webrotate-360-product-viewer.aspx) (SpotEditor) and publish a 360 or a multi-row 3D product view using your images. You may use our sample images located under additional resources in the previous link.
 
-FTP upload is available inside the software or you may upload everything manually via FileZilla or a similar client. You only need to upload a single folder located under published/360_assets of your published SpotEditor project for each product view. You may also publish multiple product views into a single 'published' location on your hard-drive and upload all product views at once.
+FTP upload is available inside the software or you may upload everything manually via FileZilla or a similar client. Consider using our optimized [PixRiot](https://www.webrotate360.com/services/pixriot.aspx) service to host and manage your spins online for unmatched convenience. You only need to upload a single folder located under published/360_assets of your published SpotEditor project for each product view. You may also publish multiple product views into a single 'published' location on your hard-drive and upload all product views at once.
 
 Note the URL of the configuration file (.xml) in the uploaded folder and enter a relative URL of the configuration file on your server in the new attribute field (webrotate_path) for selected products in the Catalog.
 
