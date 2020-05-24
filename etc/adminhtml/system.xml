@@ -32,7 +32,7 @@
                 <field id="media_url_config" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Use Media URL for Config Load </label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment><![CDATA[Set to Yes to load viewer (xml) configuration files relative to Magento's media folder]]></comment>
+                    <comment><![CDATA[360 view config can be a relative or absolute URL pointing to an XML file on your Magento server or an external server such as WebRotate 360's <a href="https://www.webrotate360.com/services/pixriot.aspx" target="_blank">PixRiot</a>. Set to Yes to load the XML file relative to Magento's media folder instead.]]></comment>
                 </field>
             </group>
             <group id="advanced" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -56,7 +56,7 @@
                 </field>
                 <field id="license" translate="label" type="text" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>License URL (PRO)</label>
-                    <comment><![CDATA[URL of license.lic on this server. The file is provided upon <a href="http://www.webrotate360.com/360-product-viewer.html" target="_blank">purchase</a>. Use relative URL if your website doesn't always redirect to www (or no www).]]></comment>
+                    <comment><![CDATA[URL of license.lic on this server. The file is provided upon <a href="https://www.webrotate360.com/products/webrotate-360-product-viewer.aspx" target="_blank">purchase</a>. Use relative URL if your website doesn't always redirect to www (or no www).]]></comment>
                 </field>
             </group>
         </section>
