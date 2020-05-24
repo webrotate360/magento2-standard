@@ -58,7 +58,7 @@ Select Stores > Configuration and expand WebRotate 360 Product Viewer > Standard
 * Enter this demo config URL (hosted via [PixRiot](https://www.webrotate360.com/services/pixriot.aspx)) in the attribute field for selected product and save and refresh Magento caches.
 
  ```shell
-https://v1.pixriot.com/?spin=433181dfa6/CMS/Magento/Example
+https://s1.pixriot.com/433181dfa6/CMS/Magento/Example/Example.xml
  ```
  
  
