@@ -62,7 +62,7 @@ https://s1.pixriot.com/433181dfa6/CMS/Magento/Example/Example.xml
  ```
  
  
- Alternatively, copy "sampleshoe" folder that is installed with the plugin (under WebRotate360/ProductViewerStandard/view/frontend/web/360assets) to a folder in your Magento installation and update the attribute field accordingly: 
+ Alternatively, copy "sampleshoe" folder that is installed with the plugin (under WebRotate360/ProductViewerStandard/view/frontend/web/360assets) to a folder in your Magento installation and update the attribute field accordingly, e.g: 
  ```shell
  /my-360-views/sampleshoe/config.xml
  ```
