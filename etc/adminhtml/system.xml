@@ -56,7 +56,7 @@
                 </field>
                 <field id="license" translate="label" type="text" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>License URL (PRO)</label>
-                    <comment><![CDATA[URL of license.lic on this server. The file is provided upon <a href="https://www.webrotate360.com/products/webrotate-360-product-viewer.aspx" target="_blank">purchase</a>. Use relative URL if your website doesn't always redirect to www (or no www).]]></comment>
+                    <comment><![CDATA[URL of license.lic on this server. The file is provided upon the purchase of the extension. Use relative URL if your website doesn't always redirect to www (or no www).]]></comment>
                 </field>
             </group>
         </section>
