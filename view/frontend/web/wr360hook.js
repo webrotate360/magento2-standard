@@ -76,12 +76,12 @@ define([
                 return;
 
             var self = this;
-            var productIndex = __WR360Config.swatches ? $('[data-role=swatch-options]').data('mageSwatchRenderer').options.jsonConfig.index : null;
             var updateDataOld = this.settings.api.updateData;
 
             this.settings.api.updateData = function(data) {
                 self.selectedSimpleConfig = null;
 
+                var productIndex = __WR360Config.swatches ? $('[data-role=swatch-options]').data('mageSwatchRenderer').options.jsonConfig.index : null;
                 if (productIndex) {
                     var selectedSimpleProductId = self.getSelectedSimpleProduct(productIndex);
                     if (selectedSimpleProductId) {
@@ -110,7 +110,8 @@ define([
         initViewerFrame: function() {
             var slide = {
                 html: "<div class='wr360wrap' style='height:100%;'></div>",
-                thumb: __WR360Config.thumbPath
+                thumb: __WR360Config.thumbPath,
+                type: 'webrotate360'
             };
 
             if (__WR360Config.endPlacement)
