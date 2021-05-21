@@ -22,11 +22,14 @@ define([
                 spinFrame.addClass('webrotate360');
                 spinWrap.html("<div id='wr360PlayerId' style='height:100%;'></div>");
                 spinWrap.on('pointerdown touchstart mousedown click mousemove touchmove mouseup', function(e) {
-                    e.stopPropagation();
+					e.stopPropagation();
                 });
 
+				spinWrap.on('pointerdown mousedown', this.disableFocusClick);
+				
                 var cfg = __WR360Config;
                 var ir = WR360.ImageRotator.Create("wr360PlayerId");
+                var self = this;
 
                 ir.settings.graphicsPath = cfg.graphicsPath;
                 ir.settings.configFileURL = this.selectedSimpleConfig ? this.selectedSimpleConfig.confFileURL : cfg.confFileURL;
@@ -35,6 +38,8 @@ define([
                 ir.licenseFileURL = cfg.licensePath;
 
                 ir.settings.apiReadyCallback = function(api, isFullscreen) {
+					spinWrap.off('pointerdown mousedown', self.disableFocusClick);
+					
                     if (cfg.apiCallback.length > 0) {
                         var fn = window[cfg.apiCallback];
                         if (typeof fn === 'function')
@@ -162,6 +167,10 @@ define([
             }
 
             return null;
+        },
+
+        disableFocusClick: function (e) {
+            e.preventDefault();
         },
 
         selectedSimpleConfig: null
