@@ -4,11 +4,13 @@
         <policy id="img-src">
             <values>
                 <value id="pixriot" type="host">*.pixriot.com</value>
+				<value id="storeimaging" type="host">*.storeimaging.com</value>
             </values>
         </policy>
         <policy id="connect-src">
             <values>
                 <value id="pixriot" type="host">*.pixriot.com</value>
+				<value id="storeimaging" type="host">*.storeimaging.com</value>
             </values>
         </policy>
     </policies>

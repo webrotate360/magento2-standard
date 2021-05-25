@@ -131,13 +131,21 @@ define([
             var selectedOptions = {};
 
             jQuery('div.swatch-attribute').each(function() {
-                var attribute = $(this).attr('attribute-id');
-                var option = $(this).attr('option-selected');
+                var attribute = $(this).attr('data-attribute-id');
+                var option = $(this).attr('data-option-selected');
+				
+				if (!attribute && !option) { // <-- to support M2 prior to 2.4.x
+					attribute = $(this).attr('attribute-id');
+					option = $(this).attr('option-selected');
+				}
 
                 if (attribute && option)
                     selectedOptions[attribute] = option;
             });
 
+			if (Object.keys(selectedOptions).length == 0)
+				return null;
+			
             /*
              for (var indexKey in productIndex) {
              if (productIndex.hasOwnProperty(indexKey)) {

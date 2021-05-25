@@ -8,15 +8,21 @@ Click this image to see a quick preview on YouTube:
 
 Note that a separate WebRotate 360 Ad-hoc integration is also [available](https://github.com/webrotate360/magento2-adhoc). 
 
+## Demo
+
+Click this link to see a demo M2 storefront, showing a configurable product with two simple products via Color attribute:
+
+https://magento.360-product-views.com/cassius-sparring-tank.html
+
 
 ## About WebRotate 360
 
-WebRotate 360 are specialists in software and tools for 360 product photography, 3D product views, and the developer of WebRotate 360 Product Viewer.
+WebRotate 360 ® are developers of 3D components and solutions for interactive eCommerce, eLearning, and digital marketing.
 
 
 ## Requirements
 
-This extension supports both Magento Community and Enterprise editions. M1 extension for previous releases is available on [Magento Marketplace](https://marketplace.magento.com/webrotate360-webrotate360-catalog.html).
+This extension supports both Magento Community and Enterprise editions. M1 extension for previous releases is available on [here](https://www.webrotate360.com/products/cms-and-e-commerce-plugins/plugin-for-magento.aspx?section=Download).
 
 
 ## Install via Composer
