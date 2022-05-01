@@ -112,7 +112,7 @@ class WebRotatedStandard implements ArgumentInterface
             return $graphicsPath;
         }
 
-        return $this->assetRepository->getUrl(self::ASSET_BASE_PATH . '/html/img/' . $this->getViewerSkin());
+        return $this->assetRepository->getUrl('WebRotate360_ProductViewerStandard::graphics/');
     }
 
     /**
