@@ -74,7 +74,7 @@ class WebRotatedStandard implements ArgumentInterface
         $product = $this->getCurrentProduct();
 
         if ($product) {
-            return ltrim($product->getData('webrotate_path'), '/');
+            return ltrim($product->getData('webrotate_path') ?? '', '/');
         }
 
         return null;
@@ -215,7 +215,7 @@ class WebRotatedStandard implements ArgumentInterface
         foreach ($children as $child) {
             $fetched = $this->productRepository->getById($child->getId());
             $configRoot = $fetched->getData('webrotate_root');
-            $configUrl = ltrim($fetched->getData('webrotate_path'), '/');
+            $configUrl = ltrim($fetched->getData('webrotate_path') ?? '', '/');
 
             if (!$configUrl && $masterConfig && $configRoot) {
                 $configUrl = $masterConfig;
