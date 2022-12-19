@@ -17,61 +17,60 @@ define([
                 return;
 
             var spinWrap = spinFrame.find('.wr360wrap');
+            if (spinWrap.length !== 1)
+                return;
 
-            if (spinWrap.length == 1) {
-                spinFrame.addClass('webrotate360');
-                spinWrap.html("<div id='wr360PlayerId' style='height:100%;'></div>");
-                spinWrap.on('pointerdown touchstart mousedown click mousemove touchmove mouseup', function(e) {
-					e.stopPropagation();
+            spinFrame.attr('tabIndex', -1);
+            spinFrame.addClass('webrotate360');
+            spinWrap.html("<div id='wr360PlayerId' style='height:100%;'></div>");
+            spinWrap.on('pointerdown touchstart mousedown click mousemove touchmove mouseup', function(e) {
+                e.stopPropagation();
+            });
+
+            var cfg = __WR360Config;
+            var ir = WR360.ImageRotator.Create('wr360PlayerId');
+
+            ir.settings.graphicsPath = cfg.graphicsPath;
+            ir.settings.configFileURL = this.selectedSimpleConfig ? this.selectedSimpleConfig.confFileURL : cfg.confFileURL;
+            ir.settings.rootPath = this.selectedSimpleConfig ? this.selectedSimpleConfig.rootPath : cfg.rootPath;
+            ir.settings.googleEventTracking  = cfg.useAnalytics;
+
+            if (cfg.licensePath) {
+                if (cfg.licensePath.indexOf('.lic') > 0)
+                    ir.licenseFileURL = cfg.licensePath;
+                else
+                    ir.licenseCode = cfg.licensePath;
+            }
+
+            ir.settings.apiReadyCallback = function(api, isFullscreen) {
+                if (cfg.apiCallback.length > 0) {
+                    var fn = window[cfg.apiCallback];
+                    if (typeof fn === 'function')
+                        fn(api, isFullscreen);
+                }
+
+                if (isFullscreen)
+                    return;
+
+                $(e.target).on('fotorama:fullscreenenter fotorama:fullscreenexit fotorama:showend', function() {
+                    api.updateDimensions();
                 });
 
-				spinWrap.on('pointerdown mousedown', this.disableFocusClick);
-				
-                var cfg = __WR360Config;
-                var ir = WR360.ImageRotator.Create("wr360PlayerId");
-                var self = this;
-
-                ir.settings.graphicsPath = cfg.graphicsPath;
-                ir.settings.configFileURL = this.selectedSimpleConfig ? this.selectedSimpleConfig.confFileURL : cfg.confFileURL;
-                ir.settings.rootPath = this.selectedSimpleConfig ? this.selectedSimpleConfig.rootPath : cfg.rootPath;
-                ir.settings.googleEventTracking  = cfg.useAnalytics;
-                ir.licenseFileURL = cfg.licensePath;
-
-                ir.settings.apiReadyCallback = function(api, isFullscreen) {
-					spinWrap.off('pointerdown mousedown', self.disableFocusClick);
-					
-                    if (cfg.apiCallback.length > 0) {
-                        var fn = window[cfg.apiCallback];
-                        if (typeof fn === 'function')
-                            fn(api, isFullscreen);
+                function onFullScreenChange() {
+                    var fsElement = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement;
+                    if (!fsElement && fotorama.fullScreen) {
+                        setTimeout(function() {
+                            api.updateDimensions()
+                        }, 100);
                     }
+                }
 
-                    if (isFullscreen)
-                        return;
+                // Subscribe to fullscreen change so we can update viewer dimensions on viewer's monitor fullscreen exit,
+                // as fotorama slightly changes its expanded "fullScreen" gallery layout when system fullscreen is triggered (for some reason).
+                document.addEventListener('fullscreenchange', onFullScreenChange, false);
+            };
 
-                    $(e.target).on('fotorama:fullscreenenter fotorama:fullscreenexit fotorama:showend', function() {
-                        api.updateDimensions();
-                    });
-
-                    function onFullScreenChange() {
-                        var fsElement = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement;
-                        if (!fsElement && fotorama.fullScreen) {
-                            setTimeout(function() {
-                                api.updateDimensions()
-                            }, 100);
-                        }
-                    }
-
-                    // Subscribe to fullscreen change so we can update viewer dimensions on viewer's monitor fullscreen exit,
-                    // as fotorama slightly changes its expanded "fullScreen" gallery layout when system fullscreen is triggered (for some reason).
-
-                    document.addEventListener("fullscreenchange", onFullScreenChange, false);
-                    document.addEventListener("webkitfullscreenchange", onFullScreenChange, false);
-                    document.addEventListener("mozfullscreenchange", onFullScreenChange, false);
-                };
-
-                ir.runImageRotator();
-            }
+            ir.runImageRotator();
         },
 
         initApi: function() {
@@ -86,15 +85,17 @@ define([
             this.settings.api.updateData = function(data) {
                 self.selectedSimpleConfig = null;
 
-                var productIndex = __WR360Config.swatches ? $('[data-role=swatch-options]').data('mageSwatchRenderer').options.jsonConfig.index : null;
+                var productIndex = __WR360Config.swatches ? window['__wr360Swatches'] : null;
                 if (productIndex) {
                     var selectedSimpleProductId = self.getSelectedSimpleProduct(productIndex);
                     if (selectedSimpleProductId) {
                         self.selectedSimpleConfig = __WR360Config.swatches[selectedSimpleProductId];
+                        /*
                         if (self.selectedSimpleConfig) {
-                            // console.log('Simple config for ' + selectedSimpleProductId + ':');
-                            // console.log(self.selectedSimpleConfig);
+                            console.log('Simple config for ' + selectedSimpleProductId + ':');
+                            console.log(self.selectedSimpleConfig);
                         }
+                        */
                     }
                 }
 
@@ -133,19 +134,19 @@ define([
             jQuery('div.swatch-attribute').each(function() {
                 var attribute = $(this).attr('data-attribute-id');
                 var option = $(this).attr('data-option-selected');
-				
-				if (!attribute && !option) { // <-- to support M2 prior to 2.4.x
-					attribute = $(this).attr('attribute-id');
-					option = $(this).attr('option-selected');
-				}
+
+                if (!attribute && !option) { // <-- to support M2 prior to 2.4.x
+                    attribute = $(this).attr('attribute-id');
+                    option = $(this).attr('option-selected');
+                }
 
                 if (attribute && option)
                     selectedOptions[attribute] = option;
             });
 
-			if (Object.keys(selectedOptions).length == 0)
-				return null;
-			
+            if (Object.keys(selectedOptions).length === 0)
+                return null;
+
             /*
              for (var indexKey in productIndex) {
              if (productIndex.hasOwnProperty(indexKey)) {
@@ -163,7 +164,7 @@ define([
                     var isMatching = true;
                     for (var attribute in selectedOptions) {
                         var option = selectedOptions[attribute];
-                        if (productOptions[attribute] != option) {
+                        if (productOptions[attribute] !== option) {
                             isMatching = false;
                             break;
                         }
@@ -175,10 +176,6 @@ define([
             }
 
             return null;
-        },
-
-        disableFocusClick: function (e) {
-            e.preventDefault();
         },
 
         selectedSimpleConfig: null

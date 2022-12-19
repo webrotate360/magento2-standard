@@ -3,6 +3,10 @@ var config = {
         mixins: {
             'mage/gallery/gallery': {
                 'WebRotate360_ProductViewerStandard/wr360hook': true
+            },
+
+            'Magento_Swatches/js/swatch-renderer': {
+                'WebRotate360_ProductViewerStandard/wr360swatch': true
             }
         },
     },

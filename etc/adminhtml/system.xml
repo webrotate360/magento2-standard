@@ -55,8 +55,8 @@
                     <comment><![CDATA[Master Config optionally allows having a single viewer (xml) configuration file for all 360 views in you store and only supply a URL path to the images folder of each product via Root Path attribute. Root Path can point to an external server, CDN, etc. Root Path URL is entered using a different product attribute with the attribute code set to webrotate_root.]]></comment>
                 </field>
                 <field id="license" translate="label" type="text" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>License URL (PRO)</label>
-                    <comment><![CDATA[URL of license.lic on this server. The file is provided upon the purchase of the extension. Use relative URL if your website doesn't always redirect to www (or no www).]]></comment>
+                    <label>License (PRO)</label>
+                    <comment><![CDATA[URL of license.lic on this server. The file is provided upon the purchase of the extension. Use relative URL, if your website doesn't always redirect to www (or no www). Alternatively, paste the text code from your license.lic.]]></comment>
                 </field>
             </group>
         </section>

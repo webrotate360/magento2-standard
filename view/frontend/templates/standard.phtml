@@ -21,12 +21,13 @@ if ($viewModel->getUseMediaUrlConfig() === true) {
 }
 
 $isLoaderOn = (!isset($isMasterMode) && !empty($configPath)) || (isset($isMasterMode) && !empty($rootPath));
+
 ?>
 
 <?php if ($isLoaderOn) : ?>
     <?php $configPath = strpos($configPath, 'https://') === 0 ? $configPath : $configBaseUrl . $configPath; ?>
     <link rel="stylesheet" type="text/css" href="<?= /* @noEscape */ $viewModel->getViewerSkinUrl() ?>"/>
-    <script language="javascript" type="text/javascript">
+    <script type="text/javascript">
         var __WR360Config = {
             thumbPath: "<?= /* @noEscape */ $viewModel->getPopupIconUrl() ?>",
             graphicsPath: "<?= /* @noEscape */ $viewModel->getGraphicsPathUrl() ?>",
