@@ -1,18 +1,17 @@
 define([
     'jquery',
-    'underscore',
-    'imagerotator'
+    'underscore'
 ], function ($) {
     'use strict';
 
     var mixin = {
-
         initialize: function(config, element) {
             this._super(config, element);
         },
 
         handleFotorama: function(e, fotorama) {
-            var spinFrame = fotorama.activeFrame.$stageFrame;
+            var widget = this,
+                spinFrame = fotorama.activeFrame.$stageFrame;
             if (spinFrame.hasClass('webrotate360'))
                 return;
 
@@ -20,57 +19,58 @@ define([
             if (spinWrap.length !== 1)
                 return;
 
-            spinFrame.attr('tabIndex', -1);
-            spinFrame.addClass('webrotate360');
-            spinWrap.html("<div id='wr360PlayerId' style='height:100%;'></div>");
-            spinWrap.on('pointerdown touchstart mousedown click mousemove touchmove mouseup', function(e) {
-                e.stopPropagation();
-            });
+            var cfg = __WR360Config,
+                ir;
 
-            var cfg = __WR360Config;
-            var ir = WR360.ImageRotator.Create('wr360PlayerId');
-
-            ir.settings.graphicsPath = cfg.graphicsPath;
-            ir.settings.configFileURL = this.selectedSimpleConfig ? this.selectedSimpleConfig.confFileURL : cfg.confFileURL;
-            ir.settings.rootPath = this.selectedSimpleConfig ? this.selectedSimpleConfig.rootPath : cfg.rootPath;
-            ir.settings.googleEventTracking  = cfg.useAnalytics;
-
-            if (cfg.licensePath) {
-                if (cfg.licensePath.indexOf('.lic') > 0)
-                    ir.licenseFileURL = cfg.licensePath;
-                else
-                    ir.licenseCode = cfg.licensePath;
-            }
-
-            ir.settings.apiReadyCallback = function(api, isFullscreen) {
-                if (cfg.apiCallback.length > 0) {
-                    var fn = window[cfg.apiCallback];
-                    if (typeof fn === 'function')
-                        fn(api, isFullscreen);
-                }
-
-                if (isFullscreen)
-                    return;
-
-                $(e.target).on('fotorama:fullscreenenter fotorama:fullscreenexit fotorama:showend', function() {
-                    api.updateDimensions();
+            require(['imagerotator'], function() {
+                spinFrame.attr('tabIndex', -1);
+                spinFrame.addClass('webrotate360');
+                spinWrap.html("<div id='wr360PlayerId' style='height:100%;'></div>");
+                spinWrap.on('pointerdown touchstart mousedown click mousemove touchmove mouseup', function(e) {
+                    e.stopPropagation();
                 });
 
-                function onFullScreenChange() {
-                    var fsElement = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement;
-                    if (!fsElement && fotorama.fullScreen) {
-                        setTimeout(function() {
-                            api.updateDimensions()
-                        }, 100);
-                    }
+                ir = WR360.ImageRotator.Create('wr360PlayerId');
+                ir.settings.graphicsPath = cfg.graphicsPath;
+                ir.settings.configFileURL = widget.selectedSimpleConfig ? widget.selectedSimpleConfig.confFileURL : cfg.confFileURL;
+                ir.settings.rootPath = widget.selectedSimpleConfig ? widget.selectedSimpleConfig.rootPath : cfg.rootPath;
+                ir.settings.googleEventTracking  = cfg.useAnalytics;
+
+                if (cfg.licensePath) {
+                    if (cfg.licensePath.indexOf('.lic') > 0)
+                        ir.licenseFileURL = cfg.licensePath;
+                    else
+                        ir.licenseCode = cfg.licensePath;
                 }
 
-                // Subscribe to fullscreen change so we can update viewer dimensions on viewer's monitor fullscreen exit,
-                // as fotorama slightly changes its expanded "fullScreen" gallery layout when system fullscreen is triggered (for some reason).
-                document.addEventListener('fullscreenchange', onFullScreenChange, false);
-            };
+                ir.settings.apiReadyCallback = function(api, isFullscreen) {
+                    if (cfg.apiCallback.length > 0) {
+                        var fn = window[cfg.apiCallback];
+                        if (typeof fn === 'function') fn(api, isFullscreen);
+                    }
 
-            ir.runImageRotator();
+                    if (isFullscreen) return;
+
+                    $(e.target).on('fotorama:fullscreenenter fotorama:fullscreenexit fotorama:showend', function() {
+                        api.updateDimensions();
+                    });
+
+                    function onFullScreenChange() {
+                        var fsElement = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement;
+                        if (!fsElement && fotorama.fullScreen) {
+                            setTimeout(function() {
+                                api.updateDimensions()
+                            }, 100);
+                        }
+                    }
+
+                    // Subscribe to fullscreen change so we can update viewer dimensions on viewer's monitor fullscreen exit,
+                    // as fotorama slightly changes its expanded "fullScreen" gallery layout when system fullscreen is triggered (for some reason).
+                    document.addEventListener('fullscreenchange', onFullScreenChange, false);
+                };
+
+                ir.runImageRotator();
+            });
         },
 
         initApi: function() {
