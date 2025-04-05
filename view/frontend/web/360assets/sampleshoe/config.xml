@@ -3,10 +3,10 @@
   <settings>
     <preloader image="images/Filename_34.jpg" />
     <userInterface showZoomButtons="true" showFullScreenToolbar="true" showToolTips="true" showHotspotsButton="true" showFullScreenButton="true" showTogglePlayButton="true" showArrows="true" toolbarAlign="center" toolbarBackColor="#FFFFFF" toolbarHoverColor="#808285" toolbarForeColor="#A7A9AE" toolbarBackAlpha="0.9" toolbarAlpha="1" flashEmbedFonts="true" progressLoopColor="#e8e8e8" progressNumColor="#949494" />
-    <control dragSpeed="0.13" inBrowserFullScreen="true" maxZoom="150" zoomSpeed="500" mouseWheelDrag="true" mouseWheelDragZoomOnly="true" singleClickZooms="true" disableMouseControl="false" reverseScroll="false" hideHotspotsOnLoad="false"/>
+    <control dragSpeed="0.13" doubleClickZooms="true" inBrowserFullScreen="true" maxZoom="150" zoomSpeed="500" mouseWheelDrag="true" mouseWheelDragZoomOnly="true" singleClickZooms="false" disableMouseControl="false" reverseScroll="false" hideHotspotsOnLoad="false"/>
     <rotation firstImage="33" rotate="false" rotatePeriod="7" rotateDirection="-1" bounce="false" useInertia="true"/>
   </settings>
-  <hotspots><hotspot id="spot1" indicatorImage="circ-cross-thin-blue.svg" effects="pulseRipple,2000,1">
+  <hotspots><hotspot id="spot1" indicatorImage="circ-cross-thin-blue.svg" effects="pulseRipple,2000,1" activateOnClick="true" deactivateOnClick="true">
       <spotinfo>
           <cdata><![CDATA[<div class="customHtmlSpot" style="overflow:hidden;padding:15px 15px 18px 15px; margin:0;line-height:18px;background-color: rgba(255, 255, 255, 0.95);color: #34495e;width: 276px;border: 1px #eeeeee solid;font-family:Verdana;font-size:12px; border-radius:5px;position:relative;box-shadow:3px 5px 5px -3px rgba(180, 180, 180, 0.96);">
 <h5 style="font-size:12px;font-weight:bold;color:#e74c3c;padding:0 5px 9px 5px;margin:0;border-bottom:1px dotted #dddddd;font-family:Verdana;">

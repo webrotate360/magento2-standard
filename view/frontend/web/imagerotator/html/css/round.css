@@ -14,6 +14,50 @@
     touch-action:pan-y;
 }
 
+.wr360_player .stub_banner_wrap
+{
+    position:relative;
+}
+
+.wr360_player .stub_banner
+{
+    z-index:1;
+    width:100%;
+    height:auto;
+    animation:stub_banner_fadein 0.3s;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+}
+
+@keyframes stub_banner_fadein
+{
+    from
+    {
+        opacity:0;
+    }
+    to
+    {
+        opacity:1;
+    }
+}
+
+.wr360_player .stub_banner > img
+{
+    max-width:100% !important;
+    max-height:100% !important;
+    width:auto;
+    height:auto;
+    position:absolute;
+    top:0;
+    bottom:0;
+    margin:auto;
+    left:0;
+    right:0;
+}
+
 .wr360_player .container
 {
     position:relative;
@@ -26,6 +70,42 @@
     max-width:none !important;
     font-family:Tahoma, sans-serif;
     cursor:pointer !important;
+}
+
+.wr360_player .container .progress_pulse
+{
+    position:absolute;
+    width:50px;
+    height:50px;
+    bottom:0;
+    top:0;
+    left:0;
+    right:0;
+    margin:auto;
+    background-color:#282828;
+    border-radius:100%;
+    animation:wr360_popup_wait 0.9s infinite ease-out;
+    z-index:1;
+    display:none;
+    border:1px solid rgba(253,253,253,1);
+}
+
+@media (min-width: 200px)
+{
+    .wr360_player.wr360_player_fs .container .progress_pulse
+    {
+        width:50px;
+        height:50px;
+    }
+}
+
+@media (min-width: 1200px)
+{
+    .wr360_player.wr360_player_fs .container .progress_pulse
+    {
+        width:70px;
+        height:70px;
+    }
 }
 
 .wr360_player .container::before
@@ -69,6 +149,40 @@
     opacity:0;
     display:inline-block;
     transition:0.2s ease;
+}
+
+@media (min-width: 200px)
+{
+    .wr360_player .container .theme_header .progress_wrap .progress_bar_anim_fs
+    {
+        margin:5px 0 0 10px;
+        height:18px;
+    }
+
+    .wr360_player .container .theme_header .progress_wrap .progress_bar_anim_fs span.percentnums
+    {
+        font-size:9px;
+        line-height:18px;
+        height:18px;
+        margin:0 0 0 5px;
+    }
+}
+
+@media (min-width: 1200px)
+{
+    .wr360_player .container .theme_header .progress_wrap .progress_bar_anim_fs
+    {
+        margin:10px 0 0 15px;
+        height:28px;
+    }
+
+    .wr360_player .container .theme_header .progress_wrap .progress_bar_anim_fs span.percentnums
+    {
+        font-size:11px;
+        line-height:28px;
+        height:28px;
+        margin:0 0 0 6px;
+    }
 }
 
 @-moz-document url-prefix()
@@ -465,6 +579,27 @@
     cursor:pointer;
     background-repeat:no-repeat;
     --anim-duration:2000ms;
+    --back-color-hover:auto;
+    --back-opacity-hover:auto;
+    outline: 1px solid transparent;
+}
+
+.wr360_player .container .hotspot_indicator.indicator_dummy
+{
+    visibility:hidden;
+}
+
+.wr360_player .container .clip_indicator.indicator_active,
+.wr360_player .container .clip_indicator:hover
+{
+    background-color:var(--back-color-hover) !important;
+    opacity:var(--back-opacity-hover) !important;
+    transition:opacity 0.1s ease-out;/*, background-color 0.1s ease-in;*/
+}
+
+.wr360_player .container .indicator_effect_flash
+{
+    animation:wr360_effect_flash var(--anim-duration) ease-out 10ms infinite;
 }
 
 .wr360_player .container .indicator_effect_pulseRinged
@@ -483,7 +618,7 @@
     border-radius:50%;
     transform-origin:center;
     z-index:1;
-    animation:wr360_effect_pulse_ringed var(--anim-duration) ease-out infinite;
+    animation:wr360_effect_pulse_ringed var(--anim-duration) ease-out 10ms infinite;
 }
 
 .wr360_player .container .indicator_effect_pulseRinged::before
@@ -498,12 +633,12 @@
     border:1px solid rgba(200, 200, 200, 0);
     transform-origin:center;
     z-index:2;
-    animation:wr360_effect_pulse_ringed_border var(--anim-duration) ease-out infinite;
+    animation:wr360_effect_pulse_ringed_border var(--anim-duration) ease-out 10ms infinite;
 }
 
 .wr360_player .container .indicator_effect_spin
 {
-    animation:wr360_effect_spin var(--anim-duration) linear infinite;
+    animation:wr360_effect_spin var(--anim-duration) linear 10ms infinite;
 }
 
 .wr360_player .container .indicator_effect_scaleUp
@@ -514,13 +649,13 @@
 
 .wr360_player .container .indicator_effect_pulseSimple
 {
-    animation:wr360_effect_pulse_simple var(--anim-duration) ease-out 0s infinite;
+    animation:wr360_effect_pulse_simple var(--anim-duration) ease-out 10ms infinite;
 }
 
 .wr360_player .container .indicator_effect_pulseOuter
 {
     border-radius:50%;
-    animation:wr360_effect_pulse_outer var(--anim-duration) ease-out infinite;
+    animation:wr360_effect_pulse_outer var(--anim-duration) ease-out 10ms infinite;
 }
 
 .wr360_player .container .indicator_effect_pulseRipple
@@ -543,7 +678,7 @@
     background:rgba(0,0,0,0);
     border:1px solid #eee;
     transform-origin:center;
-    animation:wr360_effect_pulse_ripple var(--anim-duration) linear 0s infinite;
+    animation:wr360_effect_pulse_ripple var(--anim-duration) linear 10ms infinite;
 }
 
 .wr360_player .container .indicator_effect_pulseRipple::before
@@ -554,7 +689,7 @@
 .wr360_player .container .indicator_effect_pulseDoubleOuter
 {
     border-radius:50%;
-    animation:wr360_effect_pulse_double_outer var(--anim-duration) ease-out infinite;
+    animation:wr360_effect_pulse_double_outer var(--anim-duration) ease-out 10ms infinite;
 }
 
 .wr360_player .container .hotspot_indicator_hidden
@@ -925,10 +1060,31 @@
     0%
     {
         transform:scale(0);
+        opacity:1;
+        border-color:rgba(253,253,253,1);
+    }
+    60%
+    {
+        transform:scale(0.8);
+        opacity:0.3;
+        border-color:rgba(253,253,253,0.8);
     }
     100%
     {
         transform:scale(1.0);
         opacity:0;
+        border-color:rgba(253,253,253,0);
+    }
+}
+
+@keyframes wr360_effect_flash
+{
+    75%
+    {
+        opacity:1;
+    }
+    90%
+    {
+        opacity:0.1;
     }
 }
